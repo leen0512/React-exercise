@@ -15,13 +15,25 @@ function UserList(props){
 function ProductList(props){
   console.log(props.productsList);
   return <ul>
-    {props.userList.map((item,index) => {
+    {props.productsList.map((item,index) => {
       return <li>key={index} - {item.name} {item.price}</li>
 })}
   </ul>
 }
 
-
+//q3
+function EmployeesCards(props){
+  console.log(props.employees);
+  return <div>
+  {props.employees.map((item,index) => {
+    return (
+    <h2>{item.name}</h2>,
+    <p>{item.position}</p>,
+    <img src={item.image}></img>
+  )
+})}
+</div>
+}
 
 function App() {
   const myList = [
@@ -32,10 +44,14 @@ function App() {
     {id:1, name:'Laptob', price:5000},
     {id:2, name:'Ipad', price:2000}
   ];
+  const employeesList = [
+    {id:1, name:'Walt Disney', position:'Manager', image:'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1971001350-copy.jpg?c=original'},
+    {id:2, name:'Fa Mulan', position:'Employee', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvJ8GTA_fEyh_uiBTcdjfWUf6jnIpOSTncuQ&s'}  ];
   return (
     <div className="App">
       <UserList userList={myList}></UserList>
       <ProductList productsList={products}></ProductList>
+      <EmployeesCards employees={employeesList}></EmployeesCards>
     </div>
   );
 }
