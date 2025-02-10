@@ -22,18 +22,39 @@ function ProductList(props){
 }
 
 //q3
-function EmployeesCards(props){
+function EmployeesCards(props) {
   console.log(props.employees);
-  return <div>
-  {props.employees.map((item,index) => {
-    return (
-    <h2>{item.name}</h2>,
-    <p>{item.position}</p>,
-    <img src={item.image}></img>
-  )
-})}
-</div>
+  return (
+    <div>
+      {props.employees.map((item, index) => {
+        return (
+          <div>
+            <h2>{item.name}</h2>
+            <p>{item.position}</p>
+            <img src={item.image} style={{ width: "200px", height: "200px" }} alt={item.name} />
+          </div>
+        );
+      })}
+    </div>
+  );
 }
+
+//q4
+function NavBar(props){
+  console.log(props.links);
+  return (
+  <nav>
+    <ul>
+      {props.links.map(item => (
+        <li key={item.id}>
+          <a href={item.href}>{item.label}</a>
+          </li>
+      ))}
+    </ul>
+  </nav>
+  );
+}
+
 
 function App() {
   const myList = [
@@ -47,11 +68,18 @@ function App() {
   const employeesList = [
     {id:1, name:'Walt Disney', position:'Manager', image:'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1971001350-copy.jpg?c=original'},
     {id:2, name:'Fa Mulan', position:'Employee', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvJ8GTA_fEyh_uiBTcdjfWUf6jnIpOSTncuQ&s'}  ];
-  return (
+    const linksList = [
+      { id: 1, label: "Google", href: "https://www.google.com" },
+      { id: 2, label: "YouTube", href: "https://www.youtube.com" },
+      { id: 3, label: "GitHub", href: "https://github.com" },
+    ];
+    
+    return (
     <div className="App">
       <UserList userList={myList}></UserList>
       <ProductList productsList={products}></ProductList>
       <EmployeesCards employees={employeesList}></EmployeesCards>
+      <NavBar links={linksList}></NavBar>
     </div>
   );
 }
